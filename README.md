@@ -1,9 +1,9 @@
 # Sosemanuk
-## stream cipher for Go
+## stream cipher for Go (via cgo)
 
 ## TODO
 
-Tests (pretty sure it works, it's
+Tests (pretty sure it works, it's straight from the reference code)
 
 
 ## Acks
