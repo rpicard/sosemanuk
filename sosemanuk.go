@@ -3,7 +3,7 @@ package sosemanuk
 // #include "sosemanuk.h"
 import "C"
 
-type sosemanuk struct {
+type Sosemanuk struct {
     kc C.sosemanuk_key_context
     rc C.sosemanuk_run_context
     inited bool
@@ -16,7 +16,7 @@ const KeyLenMin = 1
 const KeyLenMax = 32
 
 // initialize a Sosemanuk stream cipher
-func (s *sosemanuk) Init(key []byte, iv []byte) {
+func (s *Sosemanuk) Init(key []byte, iv []byte) {
     // check key
     keylen := len(key)
     if keylen < KeyLenMin || keylen > KeyLenMax {
@@ -46,7 +46,7 @@ func (s *sosemanuk) Init(key []byte, iv []byte) {
 }
 
 // fill output with random bytes
-func (s *sosemanuk) PRNG(output []byte) []byte {
+func (s *Sosemanuk) PRNG(output []byte) []byte {
     if s == nil || !s.inited {
         panic("sosemanuk not Init() ed")
     }
@@ -58,7 +58,7 @@ func (s *sosemanuk) PRNG(output []byte) []byte {
 }
 
 // Do the stream cipher
-func (s *sosemanuk) XORKeyStream(dst, src []byte) {
+func (s *Sosemanuk) XORKeyStream(dst, src []byte) {
     if s == nil || !s.inited {
         panic("sosemanuk not Init() ed")
     }
